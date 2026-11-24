@@ -1,0 +1,46 @@
+﻿@page "/"
+@rendermode InteractiveServer
+@inject IBierService BierService
+@using Bierbrouwerij.Application.Interfaces
+@using Bierbrouwerij.Application.DTO.Bier
+
+<h1>Bieren</h1>
+
+@if (bieren == null)
+{
+    <p>Laden...</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Naam</th>
+                <th>Beschrijving</th>
+                <th>Alcoholpercentage</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var bier in bieren)
+            {
+                <tr>
+                    <td>@bier.Naam</td>
+                    <td>@bier.Beschrijving</td>
+                    <td>@bier.Alcoholpercentage%</td>
+                    <td><a href="/bieren/@bier.Id">Detail</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a href="/bieren/nieuw">Nieuw bier toevoegen</a>
+}
+
+@code {
+    private List<BierListItemDto>? bieren;
+
+    protected override async Task OnInitializedAsync()
+    {
+        bieren = await BierService.GetAllAsync();
+    }
+}

@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37314.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bierbrouwerij.Application", "Bierbrouwerij.Application\Bierbrouwerij.Application.csproj", "{2FC62039-C08E-40CB-B39E-888B1389C5F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bierbrouwerij.Domain", "Bierbrouwerij.Domain\Bierbrouwerij.Domain.csproj", "{B6BD5CE4-5A1E-480F-945B-341856B59CA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bierbrouwerij.Infrastructure", "Bierbrouwerij.Infrastructure\Bierbrouwerij.Infrastructure.csproj", "{D783700B-D040-46D5-BBD4-4565A6CCB663}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bierbrouwerij.UI", "Bierbrouwerij.UI\Bierbrouwerij.UI.csproj", "{B5764253-2022-4C27-B62D-0EC234B37397}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bierbrouwerij.Tests", "Bierbrouwerij.Tests\Bierbrouwerij.Tests.csproj", "{CC42A077-C5F8-4EB3-868F-EF4BD72E7E26}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2FC62039-C08E-40CB-B39E-888B1389C5F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FC62039-C08E-40CB-B39E-888B1389C5F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FC62039-C08E-40CB-B39E-888B1389C5F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FC62039-C08E-40CB-B39E-888B1389C5F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6BD5CE4-5A1E-480F-945B-341856B59CA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6BD5CE4-5A1E-480F-945B-341856B59CA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6BD5CE4-5A1E-480F-945B-341856B59CA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6BD5CE4-5A1E-480F-945B-341856B59CA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D783700B-D040-46D5-BBD4-4565A6CCB663}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D783700B-D040-46D5-BBD4-4565A6CCB663}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D783700B-D040-46D5-BBD4-4565A6CCB663}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D783700B-D040-46D5-BBD4-4565A6CCB663}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5764253-2022-4C27-B62D-0EC234B37397}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5764253-2022-4C27-B62D-0EC234B37397}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5764253-2022-4C27-B62D-0EC234B37397}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5764253-2022-4C27-B62D-0EC234B37397}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC42A077-C5F8-4EB3-868F-EF4BD72E7E26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC42A077-C5F8-4EB3-868F-EF4BD72E7E26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC42A077-C5F8-4EB3-868F-EF4BD72E7E26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC42A077-C5F8-4EB3-868F-EF4BD72E7E26}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C80E73B3-C028-46CE-AB3B-7D366A553638}
+	EndGlobalSection
+EndGlobal

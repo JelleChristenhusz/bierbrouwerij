@@ -1,0 +1,16 @@
+
+services:
+  bierbrouwerij:
+    build:
+      context: . # Root van de solution als bouwcontext
+      dockerfile: Bierbrouwerij.UI/Dockerfile # Pad naar de Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development # Omgevingsvariabele voor ASP.NET Core
+      - ConnectionStrings__DefaultConnection=Data Source=/app/data/bierbrouwerij.db # SQLite database pad in de container
+    volumes:
+      - bierbrouwerij-data:/app/data # Volume zodat de database bewaard blijft bij herstart
+
+volumes:
+  bierbrouwerij-data: # Named volume voor persistente opslag

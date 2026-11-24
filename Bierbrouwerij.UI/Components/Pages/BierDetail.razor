@@ -1,0 +1,55 @@
+﻿@page "/bieren/{Id:int}"
+@rendermode InteractiveServer
+@inject IBierService BierService
+@inject NavigationManager Navigation
+@using Bierbrouwerij.Application.Interfaces
+@using Bierbrouwerij.Application.DTO.Bier
+@using Bierbrouwerij.Application.DTO.Ingredient
+
+<h1>@bier?.Naam</h1>
+
+@if (bier == null)
+{
+    <p>Laden...</p>
+}
+else
+{
+    <p><strong>Beschrijving:</strong> @bier.Beschrijving</p>
+    <p><strong>Alcoholpercentage:</strong> @bier.Alcoholpercentage%</p>
+
+    <h3>Ingrediënten</h3>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Naam</th>
+                <th>Type</th>
+                <th>Hoeveelheid</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var ingredient in bier.Ingredienten)
+            {
+                <tr>
+                    <td>@ingredient.Naam</td>
+                    <td>@ingredient.Type</td>
+                    <td>@ingredient.Hoeveelheid</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a href="/">Terug naar overzicht</a>
+}
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    private BierDetailDto? bier;
+
+    protected override async Task OnInitializedAsync()
+    {
+        bier = await BierService.GetByIdAsync(Id);
+    }
+}

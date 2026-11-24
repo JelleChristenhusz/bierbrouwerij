@@ -1,0 +1,97 @@
+﻿@page "/bieren/nieuw"
+@rendermode InteractiveServer
+@inject IBierService BierService
+@inject NavigationManager Navigation
+@using Bierbrouwerij.Application.Interfaces
+@using Bierbrouwerij.Application.DTO.Bier
+@using Bierbrouwerij.Application.DTO.Ingredient
+
+<h1>Nieuw bier toevoegen</h1>
+
+@if (foutmelding != null)
+{
+    <p style="color:red">@foutmelding</p>
+}
+
+<div>
+    <label>Naam</label>
+    <input @bind="dto.Naam" />
+</div>
+<div>
+    <label>Beschrijving</label>
+    <input @bind="dto.Beschrijving" />
+</div>
+<div>
+    <label>Alcoholpercentage</label>
+    <input type="number" step="0.1" @bind="dto.Alcoholpercentage" />
+</div>
+
+<h3>Ingrediënten</h3>
+@foreach (var ingredient in dto.Ingredienten)
+{
+    <div>
+        <input placeholder="Naam" @bind="ingredient.Naam" />
+        <input placeholder="Type" @bind="ingredient.Type" />
+        <input type="number" placeholder="Hoeveelheid" @bind="ingredient.Hoeveelheid" />
+        <button @onclick="() => VerwijderIngredient(ingredient)">Verwijderen</button>
+    </div>
+}
+
+<button @onclick="VoegIngredientToe">+ Ingrediënt toevoegen</button>
+
+<br />
+<br />
+<button @onclick="Opslaan">Opslaan</button>
+<a href="/">Annuleren</a>
+
+@code {
+    private CreateBierDto dto = new();
+    private string? foutmelding;
+
+    private void VoegIngredientToe()
+    {
+        dto.Ingredienten.Add(new CreateIngredientDto());
+    }
+
+    private void VerwijderIngredient(CreateIngredientDto ingredient)
+    {
+        dto.Ingredienten.Remove(ingredient);
+    }
+
+    private async Task Opslaan()
+    {
+        if (string.IsNullOrWhiteSpace(dto.Naam))
+        {
+            foutmelding = "Naam is verplicht.";
+            return;
+        }
+
+        if (string.IsNullOrWhiteSpace(dto.Beschrijving))
+        {
+            foutmelding = "Beschrijving is verplicht.";
+            return;
+        }
+
+        if (!dto.Ingredienten.Any())
+        {
+            foutmelding = "Voeg minimaal één ingrediënt toe.";
+            return;
+        }
+
+        if (dto.Ingredienten.Any(i => string.IsNullOrWhiteSpace(i.Naam) || string.IsNullOrWhiteSpace(i.Type) || i.Hoeveelheid <= 0))
+        {
+            foutmelding = "Vul alle ingrediënten volledig in.";
+            return;
+        }
+
+        try
+        {
+            await BierService.CreateAsync(dto);
+            Navigation.NavigateTo("/");
+        }
+        catch (ArgumentException ex)
+        {
+            foutmelding = ex.Message;
+        }
+    }
+}
